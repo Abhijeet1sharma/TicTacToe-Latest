@@ -21,7 +21,7 @@ namespace TicTacToe.Data.Model
         public string GameResult { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         //[ForeignKey("GameStateId")]
         public int GameStateId { get; set; }

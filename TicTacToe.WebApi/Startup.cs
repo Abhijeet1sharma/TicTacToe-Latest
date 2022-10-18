@@ -17,6 +17,7 @@ namespace TicTacToe.WebApi
 {
     public class Startup
     {
+        public const string DatabaseFileName = "TicTacToeDb.db";
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
@@ -27,7 +28,7 @@ namespace TicTacToe.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IGameRepository, GameRepository>();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("connString")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite($"Data Source={DatabaseFileName}"));
             services.AddControllers();
             services.AddSwaggerGen(options =>
             {
